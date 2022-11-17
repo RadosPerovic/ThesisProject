@@ -1,0 +1,36 @@
+Kratko objasnjenje ideje aplikacije: 
+
+Aplikacija ce se zasnivati na kreiranju i update-ovanju proizvoda, ordera(narudzbenice) i njihovom brisanju.
+Neki podaci ce vec biti uneti default-no, koristice se SqlExpress u lokalu sa pregledom u SSMS-u. 
+Ostali podaci ce se unositi kroz Swagger i samim tim demonstrirati rad aplikacije.
+
+Proizvod: 
+	-Proizvod koji ne psotoji u bazi se kreira kroz endpoint CREATE PRODUCT.
+	-Proizvod koji vec postoji u bazi moze se update-ovati kroz endpoint UPDATE PRODUCT.
+	-Proizvod koji ima stanje na zalihama, kroz endpoint UPDATE PRODUCT-STOCK cemo moci da promenimo kolicinu na zalihama tog proizvoda.
+	-Proizvof je moguce izbrisati kao postoij u bazi endpoint DELETE PRODUCT
+Order:
+	- Kreiranje ordera tj narudzbenice ce biti moguc samo uz postojanje konkretnog proizvoda koji ce se slati u request-u (productId), i order ce default-no biti NotPlaced - endpoint CREATE ORDER.
+	- Naknadno ce se raditi place-order - endpoint PLACE ORDER koje ce biti moguce samo ako postojeci order vec nije placeovan i tada se radi umanjene kolicine na stanju proizvoda za broj iz ordera
+	- Order koji postoji u bazi je moguce izbrisati kroz endpoint DELETE ORDER
+
+
+
+ENDPOINTS
+
+POST:
+-CREATE PRODUCT
+-CREATE ORDER
+
+PUT:
+-UPDATE PRODUCT (update product stock)
+-UPDATE PRODUCT-STOCK (update stock of that product)
+-PLACE ORDER (just if order is not placed)
+
+GET:
+GetProductById
+GetOrderById
+
+DELETE:
+DELETE ORDER (non placed)
+DELETE PRODUCT (with stock 0)
