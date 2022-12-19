@@ -19,18 +19,29 @@ Order:
 ENDPOINTS
 
 POST:
--CREATE PRODUCT
--CREATE ORDER
+-CREATE PRODUCT - done
+-CREATE ORDER - done
 
 PUT:
--UPDATE PRODUCT (update product stock)
--UPDATE PRODUCT-STOCK (update stock of that product)
+-UPDATE PRODUCT (update product stock) - done
+-UPDATE PRODUCT - AddProductStock - done
+-AddOrderItemToOrder - done
 -PLACE ORDER (just if order is not placed)
 
 GET:
-GetProductById
-GetOrderById
+GetProductById - done
+GetOrderById - 
 
 DELETE:
 DELETE ORDER (non placed)
-DELETE PRODUCT (with stock 0)
+DELETE PRODUCT (with stock 0) - TODO
+
+
+Baza podataka: 
+
+Product: Id, Name, Description, Price
+Warehouse: Id, Name, Location
+ProductWarehouseStock: WarehouseId, ProductId, Stock
+OrderStatus: Created, Placed.
+Order: Id, Name, OrderStatus, CalculatedPrice
+OrderItem: OrderId, ProductId, Price, Quantity
